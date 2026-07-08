@@ -1,6 +1,8 @@
 import { config as loadEnv } from 'dotenv';
 import { resolve as pathResolve } from 'path';
-loadEnv({ path: pathResolve(__dirname, '..', '.env') });
+import { existsSync } from 'fs';
+const envPath = pathResolve(__dirname, '..', '.env');
+if (existsSync(envPath)) loadEnv({ path: envPath, override: false });
 
 import express from 'express';
 import cors from 'cors';
