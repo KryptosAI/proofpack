@@ -1,0 +1,22 @@
+{
+  "name": "proofpack",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Stripe Dispute Evidence on Autopilot for AI SaaS",
+  "workspaces": [
+    "packages/sdk",
+    "packages/sdk-react",
+    "packages/backend",
+    "packages/frontend"
+  ],
+  "scripts": {
+    "dev:backend": "npm -w packages/backend run dev",
+    "dev:frontend": "npm -w packages/frontend run dev",
+    "build:sdk": "npm -w packages/sdk run build",
+    "build:backend": "npm -w packages/backend run build",
+    "build:frontend": "npm -w packages/frontend run build",
+    "build": "npm run build:sdk && npm run build:backend && npm run build:frontend",
+    "test": "npm -C tests run test",
+    "test:watch": "npm -C tests run test:watch"
+  }
+}

@@ -1,0 +1,14 @@
+FROM node:20-alpine AS backend
+
+WORKDIR /app
+COPY packages/backend/package.json packages/backend/package-lock.json* ./
+RUN npm ci --omit=dev
+
+COPY packages/backend/src ./src
+COPY packages/backend/tsconfig.json .
+
+RUN npm run build 2>/dev/null || true
+
+EXPOSE 3001
+ENV NODE_ENV=production
+CMD ["node", "dist/server.js"]

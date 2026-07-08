@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "proofpack-sdk"
+version = "1.0.0"
+description = "ProofPack Python SDK — Log digital product proof events for Stripe dispute defense"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = ["requests>=2.28"]
+
+[tool.setuptools]
+packages = ["proofpack"]

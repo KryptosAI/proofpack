@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy Policy — ProofPack</title>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+
+<p><strong>Last Updated:</strong> July 2026</p>
+
+<p>
+  ProofPack ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy
+  explains how we collect, use, disclose, and safeguard your information when you use the ProofPack
+  Stripe App and related SaaS platform (the "Service"). By using the Service, you agree to the
+  practices described in this policy.
+</p>
+
+<h2>1. Information We Collect</h2>
+
+<h3>1.1 Information You Provide to Us</h3>
+<ul>
+  <li><strong>Stripe Account Information:</strong> When you connect your Stripe account via OAuth, we receive
+    account identifiers, merchant name, contact email, and related account metadata necessary to
+    interact with the Stripe API on your behalf. We do <em>not</em> receive or store your Stripe
+    account password or full API secret keys entered directly by you (though we do store the
+    access tokens and scoped API keys issued by Stripe OAuth for ongoing integration).</li>
+  <li><strong>Merchant Profile:</strong> Your name, email address, and business information provided during
+    registration or account setup.</li>
+  <li><strong>Dispute Data:</strong> Chargeback records, dispute IDs, reason codes, amounts, associated
+    payment intent metadata, and related evidence fetched from Stripe when a dispute is
+    detected.</li>
+</ul>
+
+<h3>1.2 Information Collected Automatically</h3>
+<p>When you or your authorized users interact with the Service, we automatically collect:</p>
+<ul>
+  <li><strong>Proof Events:</strong> A tamper‑evident audit trail that records user sign‑ins, acceptance of
+    terms and conditions, credit or token consumption, AI‑generated output generation, file
+    downloads, and other account actions relevant to dispute defense.</li>
+  <li><strong>Technical Identifiers:</strong> IP addresses, device identifiers, session identifiers, browser
+    type, operating system, and approximate geolocation derived from IP.</li>
+  <li><strong>Usage Data:</strong> Pages or features accessed, timestamps of actions, and interaction
+    patterns within the Service.</li>
+</ul>
+
+<h3>1.3 Information We Do NOT Collect</h3>
+<ul>
+  <li>End‑customer payment details (such as full credit card numbers, CVC codes, or bank account
+    numbers). This information remains within Stripe and is never transmitted to or stored by
+    ProofPack.</li>
+  <li>Personal financial information of your end‑customers beyond what Stripe includes in a
+    dispute record (e.g., last four digits of a card, billing address associated with the
+    charge).</li>
+</ul>
+
+<h2>2. How We Use Your Information</h2>
+
+<p>We use the information we collect solely for the following purposes:</p>
+<ul>
+  <li><strong>Dispute Evidence Generation:</strong> Compiling structured evidence packets — including proof
+    events, timestamps, IP logs, device fingerprints, and AI‑output records — that you can
+    submit to Stripe (and ultimately to the card network) in response to a chargeback.</li>
+  <li><strong>Fraud Analysis and Dispute Defense:</strong> Correlating proof events with disputed transactions
+    to identify patterns that support a compelling defense against fraudulent or erroneous
+    chargebacks.</li>
+  <li><strong>Service Delivery and Operations:</strong> Authenticating your account, processing API requests,
+    monitoring system performance, debugging issues, and enforcing our terms of service.</li>
+  <li><strong>Communication:</strong> Sending administrative messages, dispute alerts, and (where opted in)
+    product updates. You may opt out of non‑administrative communications at any time.</li>
+  <li><strong>Aggregated Analytics:</strong> We may use de‑identified, aggregated data for internal business
+    intelligence and product improvement. This data cannot be linked back to you or any
+    individual end‑customer.</li>
+</ul>
+
+<p>
+  <strong>We do not sell, rent, lease, or otherwise share your information with third parties.</strong>
+  We do not use your data for cross‑context behavioral advertising or any purpose beyond those
+  listed above.
+</p>
+
+<h2>3. Data Storage and Security</h2>
+
+<ul>
+  <li><strong>Storage:</strong> All data is stored on encrypted, access‑controlled infrastructure using
+    industry‑standard cloud providers. Proof events and dispute records are persisted in secure
+    databases with encryption at rest and in transit (TLS 1.2 or higher).</li>
+  <li><strong>Access Controls:</strong> Access to production data is limited to the ProofPack developer
+    (the "sole developer") and is protected by multi‑factor authentication, role‑based
+    restrictions, and audit logging. No employee or contractor has unfettered access to raw
+    customer data.</li>
+  <li><strong>Security Measures:</strong> We employ reasonable administrative, technical, and physical
+    safeguards — including firewalls, intrusion detection, regular vulnerability assessments,
+    and secure coding practices — to protect your information against unauthorized access,
+    alteration, disclosure, or destruction.</li>
+  <li><strong>Breach Notification:</strong> In the event of a data breach that affects your information, we
+    will notify you without undue delay and in accordance with applicable law.</li>
+</ul>
+
+<p>
+  No method of electronic transmission or storage is 100% secure. While we strive to protect
+  your data, we cannot guarantee absolute security.
+</p>
+
+<h2>4. Third‑Party Services</h2>
+
+<p>
+  ProofPack integrates with the following third‑party services. These integrations are subject
+  to the privacy policies of each respective provider, and we encourage you to review them.
+</p>
+
+<h3>4.1 Stripe (Required Integration)</h3>
+<p>
+  ProofPack is a Stripe App and relies on Stripe's API to retrieve dispute data and submit
+  evidence on your behalf. Stripe acts as a data processor with respect to payment and dispute
+  information. Stripe's own privacy practices govern all information that remains within
+  Stripe's systems. ProofPack does not duplicate or independently store end‑customer payment
+  card details. For more information, see
+  <a href="https://stripe.com/privacy">Stripe's Privacy Policy</a>.
+</p>
+
+<h3>4.2 SendGrid (Optional)</h3>
+<p>
+  If you enable email alerts, we use SendGrid (a Twilio service) to deliver transactional
+  notifications, such as dispute alerts or evidence‑packet readiness notices. We share only the
+  minimum information required to send these emails (your contact email address and the content
+  of the notification). SendGrid's data processing is governed by its own privacy policy and
+  Twilio's Data Protection Addendum.
+</p>
+
+<h3>4.3 Slack (Optional)</h3>
+<p>
+  If you opt to receive Slack notifications, we use the Slack API to deliver messages to your
+  designated Slack workspace channel. We share only the text content of the notification; we do
+  not transmit personal data beyond what is necessary to route the message. Slack's privacy
+  practices are available at
+  <a href="https://slack.com/trust/privacy/privacy-policy">Slack's Privacy Policy</a>.
+</p>
+
+<h3>4.4 No Other Third‑Party Sharing</h3>
+<p>
+  Apart from the integrations described above, ProofPack does not share, disclose, or
+  transfer your information to any other third party. We do not use third‑party analytics,
+  advertising networks, or data brokers.
+</p>
+
+<h2>5. Data Retention</h2>
+
+<ul>
+  <li><strong>Active Accounts:</strong> We retain your information for as long as your account remains active
+    or as necessary to provide the Service. You may request deletion of your account and
+    associated data at any time (see Section 6).</li>
+  <li><strong>Inactive or Closed Accounts:</strong> After you close your account, we will delete or
+    anonymize your data within 60 days, except where a longer retention period is required by
+    law, or where data is necessary for our legitimate business purposes (such as defending
+    against legal claims, enforcing our terms, or maintaining the integrity of dispute evidence
+    records already submitted to Stripe).</li>
+  <li><strong>Dispute Evidence:</strong> Evidence packets submitted to Stripe become subject to Stripe's
+    retention policies and may persist in card‑network records. ProofPack cannot delete data
+    that has already been transmitted to Stripe or a card network.</li>
+</ul>
+
+<h2>6. Your Rights</h2>
+
+<p>
+  Depending on your jurisdiction, you may have certain rights regarding your personal
+  information.
+</p>
+
+<h3>6.1 General Data Protection Regulation (GDPR) — EEA / UK Residents</h3>
+<p>If you are located in the European Economic Area or the United Kingdom, you have the right to:</p>
+<ul>
+  <li>Request access to, rectification of, or erasure of your personal data.</li>
+  <li>Restrict or object to processing of your personal data.</li>
+  <li>Data portability (receive your data in a structured, machine‑readable format).</li>
+  <li>Withdraw consent at any time, where processing is based on consent.</li>
+  <li>Lodge a complaint with your local supervisory authority.</li>
+</ul>
+
+<h3>6.2 California Consumer Privacy Act (CCPA) — California Residents</h3>
+<p>If you are a California resident, you have the right to:</p>
+<ul>
+  <li>Know what personal information we collect, use, disclose, or sell (we do not sell personal
+    information).</li>
+  <li>Request deletion of your personal information.</li>
+  <li>Opt out of the sale or sharing of your personal information (again, we do not sell or share
+    data).</li>
+  <li>Not be discriminated against for exercising any of these rights.</li>
+</ul>
+
+<h3>6.3 Exercising Your Rights</h3>
+<p>
+  To exercise any of these rights, please contact us at
+  <a href="mailto:hello@proofpack.dev">hello@proofpack.dev</a>. We will respond to verified
+  requests within the timeframes required by applicable law — typically 30 days for GDPR and
+  45 days for CCPA, subject to extensions where permitted. We may need to verify your identity
+  before processing your request.
+</p>
+
+<h3>6.4 Authorized Agents</h3>
+<p>
+  You may designate an authorized agent to submit requests on your behalf. We may require
+  written proof of the agent's authorization and may still need to verify your identity directly.
+</p>
+
+<h2>7. Changes to This Policy</h2>
+
+<p>
+  We may update this Privacy Policy from time to time to reflect changes in our practices,
+  technology, legal requirements, or other factors. When we do, we will:
+</p>
+<ul>
+  <li>Post the revised policy on this page with an updated "Last Updated" date.</li>
+  <li>Notify you via email (to the address associated with your account) or through a prominent
+    notice in the Service before material changes take effect.</li>
+</ul>
+<p>
+  Your continued use of the Service after the effective date of a revised policy constitutes
+  your acceptance of the changes. If you do not agree with the updated policy, you must
+  discontinue use of the Service and close your account.
+</p>
+
+<h2>8. Contact Us</h2>
+
+<p>
+  ProofPack is developed and operated by a sole developer based in the State of Delaware,
+  United States. If you have questions, concerns, or wish to exercise your data rights, please
+  contact us at:
+</p>
+<ul>
+  <li><strong>Email:</strong> <a href="mailto:hello@proofpack.dev">hello@proofpack.dev</a></li>
+  <li><strong>Postal Address:</strong> Available upon request via the email above.</li>
+</ul>
+
+<p>
+  We take your privacy seriously and will make every effort to address your inquiry promptly
+  and thoroughly.
+</p>
+
+</body>
+</html>

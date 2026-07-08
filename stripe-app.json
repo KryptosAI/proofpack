@@ -1,0 +1,38 @@
+{
+  "$schema": "https://stripe.com/stripe-app.schema.json",
+  "id": "com.proofpack.disputes",
+  "name": "ProofPack - Dispute Evidence",
+  "version": "1.0.3",
+  "icon": "./icon.png",
+  "extensions": null,
+  "permissions": [
+    {
+      "permission": "dispute_read",
+      "purpose": "Read dispute details to analyze and generate evidence packets for chargeback defense"
+    },
+    {
+      "permission": "dispute_write",
+      "purpose": "Submit evidence and update dispute records with auto-generated proof"
+    },
+    {
+      "permission": "charge_read",
+      "purpose": "Look up charge details to link disputes to customer purchase history and metadata"
+    },
+    {
+      "permission": "customer_read",
+      "purpose": "Identify customers associated with disputed charges for accurate evidence linking"
+    }
+  ],
+  "post_install_action": {
+    "type": "external",
+    "url": "https://lemon-kings-fetch.loca.lt/api/connect/authorize"
+  },
+  "constants": {
+    "API_BASE": "https://lemon-kings-fetch.loca.lt"
+  },
+  "allowed_redirect_uris": [
+    "https://lemon-kings-fetch.loca.lt/api/connect/callback"
+  ],
+  "distribution_type": "public",
+  "stripe_api_access_type": "oauth"
+}

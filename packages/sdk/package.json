@@ -1,0 +1,20 @@
+{
+  "name": "@proofpack/sdk",
+  "version": "1.0.0",
+  "description": "ProofPack SDK - Log digital product proof events for Stripe dispute defense",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.0"
+  }
+}

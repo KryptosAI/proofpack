@@ -1,0 +1,24 @@
+app = "proofpack"
+primary_region = "iad"
+
+[build]
+  dockerfile = "docker/Dockerfile.backend"
+
+[env]
+  PORT = "8080"
+  NODE_ENV = "production"
+  STRIPE_SECRET_KEY = ""
+  STRIPE_WEBHOOK_SECRET = ""
+  APP_BASE_URL = "https://proofpack.fly.dev"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [[http_service.checks]]
+    path = "/api/health"
+    interval = "10s"
+    timeout = "2s"

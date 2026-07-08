@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProofPack — Help &amp; Documentation</title>
+</head>
+<body>
+
+<h1>ProofPack Help</h1>
+
+<p>ProofPack auto-generates dispute evidence for AI SaaS companies. Connect your Stripe account, integrate the SDK, and ProofPack handles chargeback evidence so you don't have to.</p>
+
+<h2>1. Getting Started</h2>
+
+<ol>
+  <li>Create an account at <a href="https://proofpack.dev">proofpack.dev</a>.</li>
+  <li>Grab your API key from the dashboard under <strong>Settings → API Keys</strong>. Keys start with <code>ppk_</code>.</li>
+  <li>Install the SDK for your stack.</li>
+</ol>
+
+<pre><code>npm install @proofpack/sdk</code></pre>
+
+<pre><code>pip install proofpack</code></pre>
+
+<h2>2. Integrating the SDK</h2>
+
+<p>Once installed, initialize ProofPack and start tracking user behavior. The SDK captures product usage data that ProofPack uses to build compelling dispute evidence showing legitimate customer activity.</p>
+
+<h3>JavaScript / TypeScript</h3>
+
+<pre><code>import { init } from '@proofpack/sdk';
+
+const pp = init({ apiKey: 'ppk_live_abc123...' });
+
+pp.track({
+  userId: 'user_abc',
+  event: 'output.generated',
+  metadata: { model: 'gpt-4', tokens: 512 }
+});</code></pre>
+
+<h3>Python</h3>
+
+<pre><code>from proofpack import ProofPack, ProofEventPayload
+
+pp = ProofPack(api_key="ppk_live_abc123...")
+
+pp.track(ProofEventPayload(
+    user_id="user_abc",
+    event="output.generated",
+    metadata={"model": "gpt-4", "tokens": 512}
+))</code></pre>
+
+<h3>Events to track</h3>
+
+<p>Track meaningful product actions. ProofPack uses these to prove the customer was actively using your service:</p>
+
+<ul>
+  <li><code>output.generated</code> — AI output was generated</li>
+  <li><code>session.started</code> — User logged in or began a session</li>
+  <li><code>feature.used</code> — A specific feature was accessed</li>
+  <li><code>plan.upgraded</code> — User changed plans</li>
+  <li><code>email.verified</code> — User confirmed their identity</li>
+  <li><code>ip.address</code> — Geo / IP data for the customer</li>
+</ul>
+
+<h3>Server-side tracking (optional)</h3>
+
+<p>You can also send events from your backend using the REST API:</p>
+
+<pre><code>curl -X POST https://api.proofpack.dev/v1/events \
+  -H "Authorization: Bearer ppk_live_abc123..." \
+  -H "Content-Type: application/json" \
+  -d '{
+    "userId": "user_abc",
+    "event": "output.generated",
+    "metadata": { "model": "gpt-4", "tokens": 512 }
+  }'</code></pre>
+
+<h2>3. Connecting Stripe</h2>
+
+<p>ProofPack needs read access to your Stripe disputes so it can generate evidence and (optionally) submit it on your behalf.</p>
+
+<ol>
+  <li>Go to <strong>Settings → Integrations</strong> in the ProofPack dashboard.</li>
+  <li>Click <strong>Connect Stripe</strong>. You'll be redirected to Stripe's OAuth flow.</li>
+  <li>Select the Stripe account you use for this product and authorize the connection.</li>
+  <li>After redirect, ProofPack will begin syncing your dispute data automatically.</li>
+</ol>
+
+<p>ProofPack requests the following Stripe scopes:</p>
+
+<ul>
+  <li><code>read_write</code> — Required for disputes (read + submit evidence)</li>
+  <li><code>read_only</code> — For customers, charges, and payment intents</li>
+</ul>
+
+<p>No other data is accessed. You can revoke access at any time from your Stripe dashboard.</p>
+
+<h2>4. Viewing &amp; Managing Disputes</h2>
+
+<p>Once connected, all open and recently closed disputes appear on your <strong>Disputes</strong> page. Each row shows:</p>
+
+<ul>
+  <li>Dispute status (needs response, won, lost, under review)</li>
+  <li>Dispute amount and currency</li>
+  <li>Reason code (fraudulent, product not received, etc.)</li>
+  <li>Due date for evidence submission</li>
+  <li>Customer ID and associated usage events</li>
+</ul>
+
+<p>Click any dispute to drill into the detail view, which shows the full timeline of customer activity tracked by the SDK.</p>
+
+<h2>5. Generating Evidence PDFs</h2>
+
+<p>ProofPack compiles SDK-tracked events, Stripe charge metadata, and your company profile into a single, ready-to-submit evidence PDF.</p>
+
+<p>To generate evidence for a dispute:</p>
+
+<ol>
+  <li>Open the dispute from the <strong>Disputes</strong> list.</li>
+  <li>Review the auto-populated evidence summary. ProofPack includes:</li>
+  <ul>
+    <li>Timeline of customer events and API usage</li>
+    <li>IP addresses, timestamps, and user-agent strings</li>
+    <li>Terms of service acceptance and billing history</li>
+    <li>Product/service description from your ProofPack profile</li>
+  </ul>
+  <li>Add any custom notes or attachments if needed.</li>
+  <li>Click <strong>Generate PDF</strong>. ProofPack produces a Stripe-compliant evidence document.</li>
+</ol>
+
+<p>You can also trigger generation via the API:</p>
+
+<pre><code>curl -X POST https://api.proofpack.dev/v1/disputes/dp_xxx/evidence \
+  -H "Authorization: Bearer ppk_live_abc123..."</code></pre>
+
+<h2>6. Submitting Evidence to Stripe</h2>
+
+<p>After reviewing the generated evidence, you have two options:</p>
+
+<ul>
+  <li><strong>Manual submit</strong> — Download the PDF and upload it to Stripe yourself.</li>
+  <li><strong>Auto-submit</strong> — Enable "Auto-submit evidence" in <strong>Settings</strong>. ProofPack will file evidence automatically 24 hours before the Stripe deadline (you'll receive an email 48 hours before for a final review window).</li>
+</ul>
+
+<p>To submit via API:</p>
+
+<pre><code>curl -X POST https://api.proofpack.dev/v1/disputes/dp_xxx/submit \
+  -H "Authorization: Bearer ppk_live_abc123..."</code></pre>
+
+<h2>7. FAQ</h2>
+
+<h3>What is a chargeback / dispute?</h3>
+<p>A chargeback occurs when a cardholder disputes a charge with their bank. Stripe deducts the amount plus a fee from your account and opens a dispute. You have a limited window to submit evidence proving the charge was legitimate.</p>
+
+<h3>How does ProofPack help win disputes?</h3>
+<p>ProofPack correlates your SDK-tracked usage events with Stripe charge data to build a timeline of legitimate customer activity. The resulting evidence shows the customer actively used and benefited from your service, which is exactly what card networks look for.</p>
+
+<h3>What Stripe evidence requirements does ProofPack cover?</h3>
+<p>ProofPack addresses the most common Stripe evidence categories: service documentation, access/activity logs, customer communication, terms of service acceptance, and billing history. For specific reason codes (e.g., "product not received"), ProofPack tailors the evidence package accordingly.</p>
+
+<h3>What if the customer never used the product?</h3>
+<p>ProofPack still builds a case using billing records, IP logs, sign-up timestamps, and your terms of service. Even minimal activity can be enough when the service was made available and accessible.</p>
+
+<h3>Is my data secure?</h3>
+<p>Yes. ProofPack encrypts all data in transit (TLS 1.3) and at rest (AES-256). API keys are hashed. Stripe credentials are handled via OAuth and never stored on our servers. We are SOC 2 Type II compliant.</p>
+
+<h3>Do I need to track every user action?</h3>
+<p>No. Track meaningful product events — logins, outputs generated, features used. A handful of high-signal events per session is enough. The more context you provide, the stronger the evidence.</p>
+
+<h3>Can I use ProofPack without the SDK?</h3>
+<p>Yes. You can send events through the REST API or import historical data via CSV upload. The SDK is just the most convenient path.</p>
+
+<h3>What does it cost?</h3>
+<p>ProofPack is free for up to 5 disputes per month. Paid plans start at $49/month and scale with dispute volume. See our pricing page for details.</p>
+
+<h3>How do I disconnect Stripe?</h3>
+<p>Go to <strong>Settings → Integrations</strong> and click <strong>Disconnect</strong>. You can also revoke access from your Stripe dashboard under <strong>Settings → Connected applications</strong>.</p>
+
+<h3>Need more help?</h3>
+<p>Email us at <a href="mailto:hello@proofpack.dev">hello@proofpack.dev</a>. We respond within a few hours on business days.</p>
+
+</body>
+</html>
